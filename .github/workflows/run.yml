@@ -1,0 +1,29 @@
+name: WTIOIL Bot
+
+on:
+  schedule:
+    - cron: '0 */8 * * *'   # chạy mỗi 8 tiếng
+  workflow_dispatch:        # cho phép bấm chạy tay
+
+jobs:
+  run-bot:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          
+      - name: Install requests
+        run: pip install requests
+        
+      - name: Run bot
+        run: python bot.py
+        
+      - name: Upload log
+        uses: actions/upload-artifact@v4
+        with:
+          name: log
+          path: log.txt
