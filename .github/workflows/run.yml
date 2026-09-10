@@ -20,7 +20,7 @@ jobs:
         run: pip install requests
         
       - name: Run bot
-        run: python bot.py
+        run: python bot2.py
         
       - name: Upload log
         uses: actions/upload-artifact@v4
